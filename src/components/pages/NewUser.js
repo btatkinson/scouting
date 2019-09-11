@@ -4,6 +4,25 @@ import Panel from '../components/Panel.js';
 import { Animated } from "react-animated-css";
 import '../../styles/NewUser.scss';
 
+class Panels extends Component {
+
+  render() {
+    return(
+      <div className='j-contain'>
+       {this.props.pdata.map((pdata) =>
+         <Panel
+           key={pdata.key}
+           ref={pdata.ref}
+           ptype={pdata.ptype}
+           handleClick={pdata.panelClick}
+         />
+        )}
+      </div>
+    )
+  }
+
+}
+
 class NewUser extends Component {
 
   constructor(props) {
@@ -12,38 +31,28 @@ class NewUser extends Component {
     this.loginRef = React.createRef();
     this.signupRef = React.createRef();
 
+    this.panelClick = this.panelClick.bind(this);
+
     this.pdata = [
       {
         'key':'login',
         'ref':this.loginRef,
-        'ptype':'login'
+        'ptype':'login',
+        'panelClick':this.panelClick
       },
       {
         'key':'signup',
         'ref':this.signupRef,
-        'ptype':'signup'
+        'ptype':'signup',
+        'panelClick':this.panelClick
       },
     ]
-
-    this.panels=this.pdata.map((pdata, i) => {
-        return (
-          <Panel
-            key={pdata.key}
-            ref={pdata.ref}
-            ptype={pdata.ptype}
-            handleClick={this.panelClick}
-          />
-        )
-    })
 
     this.state = {
       'loginBB': null,
       'signupBB': null,
-      'pdata':this.pdata,
-      'panels':this.panels
+      'pdata':this.pdata
     }
-
-    this.panelClick = this.panelClick.bind(this);
   }
 
   componentDidMount(){
@@ -70,20 +79,8 @@ class NewUser extends Component {
 
 
   panelClick(){
-    const reverseData = this.state.pdata.reverse()
-    const reversePanels = this.state.pdata.reverse().map((pdata, i) => {
-        return (
-          <Panel
-            key={pdata.key}
-            ref={pdata.ref}
-            ptype={pdata.ptype}
-            handleClick={this.panelClick}
-          />
-        )
-    })
     this.setState({
-      'pdata':reverseData,
-      'panels':reversePanels
+      pdata: this.state.pdata.reverse()
     });
   }
 
@@ -94,7 +91,7 @@ class NewUser extends Component {
     return (
       <div className='newuser'>
         <div className='jumbo'>
-          {this.state.panels}
+          <Panels pdata={this.state.pdata}/>
         </div>
       </div>
     )

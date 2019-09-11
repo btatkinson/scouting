@@ -18,8 +18,11 @@
   display: flex;
 }
 
-.jumbo > .login {order: 2; } /* Will be displayed second */
-.jumbo > .signup {order: 1; } /* Will be displayed first  */
+.j-contain{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 
 .br-left{
   border-top-left-radius: 10px;
