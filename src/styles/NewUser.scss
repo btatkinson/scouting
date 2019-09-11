@@ -14,7 +14,7 @@
   height: 65%;
   width: 65%;
   display: block;
-  background-color: $primary;
+  background-color: transparent;
   display: flex;
 }
 
@@ -39,12 +39,54 @@
   height: 100%;
 }
 
-.login{
+.form{
   width: 66.666%;
-  background-color: $navy;
+  background-color: transparent;
 }
 
-.signup{
+.info{
   width: 33.333%;
-  background-color: transparent;
+  background-color: $primary;
+}
+
+.info-c{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-fade-in{
+  animation: fadeInRight forwards;
+  animation-duration: 1000ms;
+  animation-delay: 100ms;
+}
+
+@keyframes fadeInRight {
+   0% {
+      opacity: 0;
+      transform: translateX(20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}
+.right-fade-out{
+  animation: fadeOutRight forwards;
+  animation-duration: 1000ms;
+  animation-delay: 100ms;
+}
+
+@keyframes fadeOutRight {
+   0% {
+     opacity: 1;
+     transform: translateX(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateX(20px);
+   }
 }
