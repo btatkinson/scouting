@@ -1,0 +1,47 @@
+@import '_colors.scss';
+
+.newuser{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.jumbo{
+  border: 1px solid $primary;
+  border-radius: 10px;
+  height: 65%;
+  width: 65%;
+  display: block;
+  background-color: $primary;
+  display: flex;
+}
+
+.jumbo > .login {order: 2; } /* Will be displayed second */
+.jumbo > .signup {order: 1; } /* Will be displayed first  */
+
+.br-left{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.br-right{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.login{
+  width: 66.666%;
+  background-color: $navy;
+}
+
+.signup{
+  width: 33.333%;
+  background-color: transparent;
+}

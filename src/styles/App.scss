@@ -1,0 +1,10 @@
+@import '_colors.scss';
+
+html, body,.App, #root{
+  width: 102%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background: $navy;
+}
