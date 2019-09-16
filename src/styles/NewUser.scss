@@ -58,12 +58,33 @@
   align-items: center;
 }
 
+.info-tc{
+  width: 100%;
+  height: 200px;
+  position: relative;
+  display: block;
+}
+
+.info-text{
+  position: absolute;
+  width: 100%;
+  top:0px;
+  left: 0px;
+  text-align: center;
+  color:$navy;
+}
+
 .account-btn{
+  position: relative;
+  display: block;
   background-color: transparent;
   border: 2px solid $navy;
   border-radius: 5px;
   color: $navy;
-  min-width: 200px;
+  min-width: 175px;
+  min-height: 60px;
+  padding: 10px;
+
 }
 .account-btn:hover,.account-btn:active,.account-btn:focus{
   outline:none;
@@ -73,4 +94,17 @@
   background-color: $navy;
   border: 2px solid $navy;
   color: $primary;
+}
+
+.account-btn-text{
+  position: absolute;
+  top: 15px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 24px;
+  margin: 0px;
+}
+.account-btn-text>p{
+  margin: 0px;
 }

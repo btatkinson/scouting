@@ -18,23 +18,22 @@ class NPInfo extends Component {
   render() {
     return(
       <div className='info-c'>
-        <div className={
-            this.props.signup ?
-            `${this.rightVisClasses}` :
-            `${this.rightHidClasses}`
-          }>
-          <h1>New User?</h1>
-        </div>
-        <div className={
-            !this.props.signup ?
-            `${this.leftVisClasses}` :
-            `${this.leftHidClasses}`
-          }>
-          <h1>One of Us?</h1>
+        <div className='info-tc'>
+          <Animated className='info-text' animationIn="fadeInRight" animationOut="fadeOutRight" animationInDuration={1000} animationOutDuration={1000} isVisible={this.props.signup}>
+              <h1>One of Us?</h1>
+              <p>Welcome back!</p>
+          </Animated>
+          <Animated className='info-text' animationIn="fadeInLeft" animationOut="fadeOutLeft" animationInDuration={1000} animationOutDuration={1000} isVisible={!this.props.signup}>
+              <h1>New to Us?</h1>
+              <p>Sign-up today!</p>
+          </Animated>
         </div>
         <button className='account-btn' onClick={this.props.handleClick}>
-          <Animated animationIn="slideInDown" animationOut="slideOutUp" isVisible={this.props.signup}>
-            <p className='account-btn-text'>Login</p>
+          <Animated className='account-btn-text' animationIn="slideInDown" animationOut="fadeOutUp" isVisible={this.props.signup}>
+            <p>Login</p>
+          </Animated>
+          <Animated className='account-btn-text' animationIn="slideInUp" animationOut="fadeOutDown" isVisible={!this.props.signup}>
+            <p>Sign-Up</p>
           </Animated>
         </button>
       </div>
