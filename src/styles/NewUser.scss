@@ -58,35 +58,19 @@
   align-items: center;
 }
 
-.right-fade-in{
-  animation: fadeInRight forwards;
-  animation-duration: 1000ms;
-  animation-delay: 100ms;
+.account-btn{
+  background-color: transparent;
+  border: 2px solid $navy;
+  border-radius: 5px;
+  color: $navy;
+  min-width: 200px;
+}
+.account-btn:hover,.account-btn:active,.account-btn:focus{
+  outline:none;
 }
 
-@keyframes fadeInRight {
-   0% {
-      opacity: 0;
-      transform: translateX(20px);
-   }
-   100% {
-      opacity: 1;
-      transform: translateX(0);
-   }
-}
-.right-fade-out{
-  animation: fadeOutRight forwards;
-  animation-duration: 1000ms;
-  animation-delay: 100ms;
-}
-
-@keyframes fadeOutRight {
-   0% {
-     opacity: 1;
-     transform: translateX(0);
-   }
-   100% {
-      opacity: 0;
-      transform: translateX(20px);
-   }
+.account-btn:hover{
+  background-color: $navy;
+  border: 2px solid $navy;
+  color: $primary;
 }

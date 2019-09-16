@@ -11,6 +11,8 @@ class NPInfo extends Component {
     this.leftVisClasses = 'left-fade-in'
     this.leftHidClasses = 'left-fade-out'
 
+    console.log(this.props.signup);
+
   }
 
   render() {
@@ -22,9 +24,6 @@ class NPInfo extends Component {
             `${this.rightHidClasses}`
           }>
           <h1>New User?</h1>
-          <button onClick={this.props.handleClick}>
-            Sign-Up
-          </button>
         </div>
         <div className={
             !this.props.signup ?
@@ -32,10 +31,12 @@ class NPInfo extends Component {
             `${this.leftHidClasses}`
           }>
           <h1>One of Us?</h1>
-          <button onClick={this.props.handleClick}>
-            Login
-          </button>
         </div>
+        <button className='account-btn' onClick={this.props.handleClick}>
+          <Animated animationIn="slideInDown" animationOut="slideOutUp" isVisible={this.props.signup}>
+            <p className='account-btn-text'>Login</p>
+          </Animated>
+        </button>
       </div>
     )
   }
