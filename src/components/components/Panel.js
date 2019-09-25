@@ -11,19 +11,17 @@ class NPInfo extends Component {
     this.leftVisClasses = 'left-fade-in'
     this.leftHidClasses = 'left-fade-out'
 
-    console.log(this.props.signup);
-
   }
 
   render() {
     return(
       <div className='info-c'>
         <div className='info-tc'>
-          <Animated className='info-text' animationIn="fadeInRight" animationOut="fadeOutRight" animationInDuration={1000} animationOutDuration={1000} isVisible={this.props.signup}>
+          <Animated className='info-text' animationIn="fadeInRight" animationOut="fadeOutRight" animationInDuration={1250} animationOutDuration={750} isVisible={this.props.signup}>
               <h1>One of Us?</h1>
               <p>Welcome back!</p>
           </Animated>
-          <Animated className='info-text' animationIn="fadeInLeft" animationOut="fadeOutLeft" animationInDuration={1000} animationOutDuration={1000} isVisible={!this.props.signup}>
+          <Animated className='info-text' animationIn="fadeInLeft" animationOut="fadeOutLeft" animationInDuration={1250} animationOutDuration={750} isVisible={!this.props.signup}>
               <h1>New to Us?</h1>
               <p>Sign-up today!</p>
           </Animated>
@@ -43,11 +41,71 @@ class NPInfo extends Component {
 }
 
 class NPForm extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      loginUsername:"",
+      loginPassword:""
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleChange(evt){
+    console.log(evt.target.value);
+    this.setState({
+      [evt.target.name]:evt.target.value
+    });
+  }
+
+  handleSubmit(evt){
+    evt.preventDefault();
+    alert(`You typed: ${this.state.loginUsername}`);
+    this.setState({
+      loginUsername:'',
+      loginPassword:''
+    })
+  }
 
   render() {
     return(
-      <div className='form'>
-        <h1>Form</h1>
+      <div className='form-c'>
+        <div className='form-tc'>
+          <Animated className='form-text' animationIn="zoomIn" animationOut="zoomOut" animationInDuration={1000} animationInDelay={500} animationOutDuration={1000} isVisible={this.props.signup}>
+              <h1 className='su-text'>Sign-up Form</h1>
+              <h2 className='su-text'>Welcome back, Blake</h2>
+          </Animated>
+          <Animated className='form-text' animationIn="zoomIn" animationOut="zoomOut" animationInDuration={1000} animationInDelay={500} animationOutDuration={1000} isVisible={!this.props.signup}>
+            <h1 className='su-text'>Login Form</h1>
+            <form onSubmit={this.handleSubmit}>
+              <label htmlFor='email'></label>
+              <input
+                type='text'
+                name='loginUsername'
+                onChange={this.handleChange}
+                placeholder={"Email"}
+                value={this.state.loginUsername}
+                >
+              </input>
+              <label htmlFor='password'></label>
+              <input
+                type='text'
+                name='loginPassword'
+                onChange={this.handleChange}
+                value={this.state.loginPassword}
+                placeholder={"Password"}
+                >
+
+              </input>
+              <button type='submit'>
+                Submit
+              </button>
+            </form>
+
+          </Animated>
+        </div>
       </div>
     )
   }
