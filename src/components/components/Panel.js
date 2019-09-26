@@ -44,6 +44,9 @@ class NPForm extends Component {
   constructor(props){
     super(props);
 
+    this.zoomOutClass = 'zoomOut'
+    this.zoomInClass = 'zoomIn'
+
     this.state = {
       loginUsername:"",
       loginPassword:""
@@ -73,38 +76,41 @@ class NPForm extends Component {
     return(
       <div className='form-c'>
         <div className='form-tc'>
-          <Animated className='form-text' animationIn="zoomIn" animationOut="zoomOut" animationInDuration={1000} animationInDelay={500} animationOutDuration={1000} isVisible={this.props.signup}>
+          <div className={`form-text ${this.props.signup ? this.zoomInClass : this.zoomOutClass}`}>
               <h1 className='su-text'>Sign-up Form</h1>
               <h2 className='su-text'>Welcome back, Blake</h2>
-          </Animated>
-          <Animated className='form-text' animationIn="zoomIn" animationOut="zoomOut" animationInDuration={1000} animationInDelay={500} animationOutDuration={1000} isVisible={!this.props.signup}>
-            <h1 className='su-text'>Login Form</h1>
-            <form onSubmit={this.handleSubmit}>
-              <label htmlFor='email'></label>
-              <input
-                type='text'
-                name='loginUsername'
-                onChange={this.handleChange}
-                placeholder={"Email"}
-                value={this.state.loginUsername}
-                >
-              </input>
-              <label htmlFor='password'></label>
-              <input
-                type='text'
-                name='loginPassword'
-                onChange={this.handleChange}
-                value={this.state.loginPassword}
-                placeholder={"Password"}
-                >
+          </div>
+          <div className={`form-text ${!this.props.signup ? this.zoomInClass : this.zoomOutClass}`} >
+            <div className='d-flex'>
+              <h1 className='su-text'>Login Form</h1>
+              <form className='l-form' onSubmit={this.handleSubmit}>
+                <label htmlFor='email'></label>
+                <input
+                  type='text'
+                  name='loginUsername'
+                  onChange={this.handleChange}
+                  placeholder={"Email"}
+                  value={this.state.loginUsername}
+                  className="login-user f-input"
+                  >
+                </input>
+                <label htmlFor='password'></label>
+                <input
+                  type='text'
+                  name='loginPassword'
+                  onChange={this.handleChange}
+                  value={this.state.loginPassword}
+                  placeholder={"Password"}
+                  className="login-pswd f-input"
+                  >
 
-              </input>
-              <button type='submit'>
-                Submit
-              </button>
-            </form>
-
-          </Animated>
+                </input>
+                <button type='submit'>
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     )
