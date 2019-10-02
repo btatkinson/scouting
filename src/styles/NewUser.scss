@@ -72,25 +72,46 @@
   height: 100%;
 }
 
+.remove{
+  display:none;
+}
+
 @-webkit-keyframes zoomin {
-  0%   { transform: scale(0); }
-  100% { transform: scale(1); }
+
 }
 @keyframes zoomin {
-  0%   { transform: scale(0); }
-  100% { transform: scale(1); }
+  0%{
+    transform: scale(0);
+  }
+  50%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
 .zoomIn {
-  -webkit-animation: zoomin 5s forwards; /* Safari 4+ */
-  animation:         zoomin 5s forwards; /* IE 10+, Fx 29+ */
+  -webkit-animation: zoomin 2s forwards;
+  animation:         zoomin 2s forwards;
 }
-
-.zoomOut{
+@-webkit-keyframes zoomout {
 
 }
-
-@keyframes{
-
+@keyframes zoomout {
+  0%{
+    display: block;
+    height:100%;
+    opacity: 100%;
+  }
+  100%{
+    display: block;
+    height:0%;
+    opacity: 0%;
+  }
+}
+.zoomOut {
+  -webkit-animation: zoomout 2s forwards;
+  animation:         zoomout 2s forwards;
 }
 
 .d-flex{

@@ -44,13 +44,16 @@ class NPForm extends Component {
   constructor(props){
     super(props);
 
-    this.zoomOutClass = 'zoomOut'
-    this.zoomInClass = 'zoomIn'
-
     this.state = {
       loginUsername:"",
-      loginPassword:""
+      loginPassword:"",
+      removeLogin:false,
+      removeSignup:true,
+      animateLogin:'zoomIn',
+      animateSignup:'',
+      firstMount:true
     }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -72,15 +75,52 @@ class NPForm extends Component {
     })
   }
 
+  static getDerivedStateFromProps(props, state){
+    let new_state = state;
+    if (state.firstMount){
+      new_state.firstMount = false;
+    }
+    return new_state
+
+  }
+
+  loginAnimationEnd = () => {
+    if(this.state.firstMount){
+      this.setState({
+        'firstMount':false,
+      });
+    }
+    else{
+
+    }
+  }
+  signupAnimationEnd = () => {
+
+  }
+
   render() {
+
     return(
       <div className='form-c'>
         <div className='form-tc'>
-          <div className={`form-text ${this.props.signup ? this.zoomInClass : this.zoomOutClass}`}>
+          <div className={
+              `form-text
+              ${this.state.animateSignup}
+              ${this.state.removeSignup ? 'remove':'remove'}
+              `}
+              onAnimationEnd={this.signupAnimationEnd}
+          >
               <h1 className='su-text'>Sign-up Form</h1>
               <h2 className='su-text'>Welcome back, Blake</h2>
           </div>
-          <div className={`form-text ${!this.props.signup ? this.zoomInClass : this.zoomOutClass}`} >
+          <div
+            className={
+              `form-text
+              ${this.state.animateLogin}
+              ${this.state.removeLogin ? 'remove':''}`
+            }
+            onAnimationEnd={this.loginAnimationEnd}
+            >
             <div className='d-flex'>
               <h1 className='su-text'>Login Form</h1>
               <form className='l-form' onSubmit={this.handleSubmit}>
