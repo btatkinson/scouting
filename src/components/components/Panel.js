@@ -76,12 +76,21 @@ class NPForm extends Component {
   }
 
   static getDerivedStateFromProps(props, state){
+    console.log(props);
     let new_state = state;
     if (state.firstMount){
       new_state.firstMount = false;
+    } else{
+      if (!props.signup){
+        new_state.animateLogin = 'zoomInDelay';
+        new_state.animateSignup = 'zoomOut';
+      } else{
+        new_state.animateSignup = 'zoomInDelay';
+        new_state.animateLogin = 'zoomOut';
+      }
     }
-    return new_state
 
+    return new_state
   }
 
   loginAnimationEnd = () => {

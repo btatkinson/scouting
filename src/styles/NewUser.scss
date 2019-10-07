@@ -41,7 +41,7 @@
 
 .form{
   width: 66.666%;
-  background-color: transparent;
+  background-color: $navy;
 }
 
 .form-c{
@@ -83,35 +83,28 @@
   0%{
     transform: scale(0);
   }
-  50%{
-    transform: scale(0);
-  }
   100%{
     transform: scale(1);
   }
 }
 .zoomIn {
-  -webkit-animation: zoomin 2s forwards;
-  animation:         zoomin 2s forwards;
+  -webkit-animation: zoomin 1.5s forwards;
+  animation:         zoomin 1.5s forwards;
 }
 @-webkit-keyframes zoomout {
 
 }
 @keyframes zoomout {
   0%{
-    display: block;
-    height:100%;
-    opacity: 100%;
+    transform:scale(1,1);
   }
   100%{
-    display: block;
-    height:0%;
-    opacity: 0%;
+    transform:scale(0,0.5);
   }
 }
 .zoomOut {
-  -webkit-animation: zoomout 2s forwards;
-  animation:         zoomout 2s forwards;
+  -webkit-animation: zoomout 0.5s forwards;
+  animation:         zoomout 0.5s forwards;
 }
 
 .d-flex{
